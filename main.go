@@ -39,10 +39,8 @@ func main() {
 	app := fiber.New(config)
 	apiV1 := app.Group("/api/v1")
 	apiV1.Get("/user", userHandler.HandleGetUser)
+	apiV1.Get("/user", userHandler.HandlePostUser)
 	apiV1.Get("/user/:id", userHandler.HandleGetUser)
 
 	app.Listen(*listenAddr)
-}
-func handleUser(c *fiber.Ctx) error {
-	return c.JSON(map[string]string{"user": "James Foo"})
 }
