@@ -37,7 +37,7 @@ func (h *UserHandler) HandlePostUser(c *fiber.Ctx) error {
 	return c.JSON(insertedUser)
 
 }
-func (h *UserHandler) HandleGetUser(c *fiber.Ctx) error {
+func (h *UserHandler) HandleGetUsers(c *fiber.Ctx) error {
 	users, err := h.userStore.GetAllUsers(c.Context())
 	if err != nil {
 		return err
@@ -65,7 +65,7 @@ func ErrBadRequest() {
 	panic("unimplemented")
 }
 
-func (h *UserHandler) HandleGetUsers(c *fiber.Ctx) error {
+func (h *UserHandler) HandleGetUser(c *fiber.Ctx) error {
 	ctx := context.Background()
 	id := c.Params("id")
 	user, err := h.userStore.GetUserById(ctx, id)
